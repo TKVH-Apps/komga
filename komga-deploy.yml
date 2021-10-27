@@ -1,0 +1,70 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: komga
+  labels:
+    app: komga
+    part-of: komga
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@hourly"
+    keel.sh/match-tag: true
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: komga
+      part-of: komga
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: komga
+        part-of: komga
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+      containers:
+      - name: komga
+        image: gotson/komga:latest
+        ports:
+        - name: komga
+          containerPort: 8080
+        env:
+        - name: KOMGA_LIBRARIES_SCAN_CRON
+          value: "0 0 * * * ?"
+        - name: KOMGA_REMEMBERME_KEY 
+          value: "random"
+        - name: JAVA_TOOL_OPTIONS
+          value: "-Xmx256m"
+        volumeMounts:
+        - name: komga
+          mountPath: /config
+        - name: mangas
+          mountPath: /mangas
+        readinessProbe:
+          tcpSocket:
+            port: komga
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: komga
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        resources:
+          limits:
+            memory: 1024Mi
+            cpu: 1.5
+          requests:
+            memory: 128Mi
+      volumes:
+      - name: komga
+        persistentVolumeClaim:
+          claimName: komga
+      - name: mangas
+        persistentVolumeClaim:
+          claimName: mangas
