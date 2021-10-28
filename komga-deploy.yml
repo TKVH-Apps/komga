@@ -40,6 +40,8 @@ spec:
           value: "random"
         - name: JAVA_TOOL_OPTIONS
           value: "-Xmx512m"
+        - name: KOMGA_FILE_HASHING
+          value: "false"
         volumeMounts:
         - name: komga
           mountPath: /config
