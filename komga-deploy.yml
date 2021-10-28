@@ -39,7 +39,7 @@ spec:
         - name: KOMGA_REMEMBERME_KEY 
           value: "random"
         - name: JAVA_TOOL_OPTIONS
-          value: "-Xmx256m"
+          value: "-Xmx128m"
         volumeMounts:
         - name: komga
           mountPath: /config
@@ -57,7 +57,7 @@ spec:
           periodSeconds: 20
         resources:
           limits:
-            memory: 1024Mi
+            memory: 512Mi
             cpu: 1.5
           requests:
             memory: 128Mi
