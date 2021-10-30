@@ -39,7 +39,7 @@ spec:
         - name: KOMGA_REMEMBERME_KEY 
           value: "random"
         - name: JAVA_TOOL_OPTIONS
-          value: "-Xmx512m"
+          value: "-Xmx64m -XX:+UseContainerSupport -Xms32m -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=384"
         - name: KOMGA_FILE_HASHING
           value: "false"
         volumeMounts:
@@ -59,9 +59,9 @@ spec:
           periodSeconds: 20
         resources:
           limits:
-            memory: 1Gi
-          requests:
             memory: 512Mi
+          requests:
+            memory: 384Mi
       volumes:
       - name: komga
         persistentVolumeClaim:
