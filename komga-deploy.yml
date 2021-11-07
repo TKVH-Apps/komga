@@ -39,7 +39,7 @@ spec:
         - name: KOMGA_REMEMBERME_KEY 
           value: "random"
         - name: JAVA_TOOL_OPTIONS
-          value: "-Xmx128m -XX:+UseContainerSupport -Xms64m -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=448m"
+          value: "-Xmx256m -XX:+UseContainerSupport -Xms64m -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=448m"
         - name: KOMGA_FILE_HASHING
           value: "false"
         volumeMounts:
