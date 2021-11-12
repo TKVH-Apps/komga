@@ -39,7 +39,7 @@ spec:
         - name: KOMGA_REMEMBERME_KEY 
           value: "random"
         - name: JAVA_TOOL_OPTIONS
-          value: "-Xmx256m -XX:+UseContainerSupport -Xms64m -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=448m"
+          value: "-XX:+UseContainerSupport -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=740m"
         - name: KOMGA_FILE_HASHING
           value: "false"
         volumeMounts:
@@ -51,20 +51,20 @@ spec:
           httpGet:
             path: /
             port: komga
-          initialDelaySeconds: 80
+          initialDelaySeconds: 30
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /
             port: komga
-          initialDelaySeconds: 75
+          initialDelaySeconds: 25
           periodSeconds: 20
         resources:
           limits:
-            memory: 512Mi
+            memory: 1Gi
             cpu: 1000m
           requests:
-            memory: 256Mi
+            memory: 740Mi
       volumes:
       - name: komga
         persistentVolumeClaim:
