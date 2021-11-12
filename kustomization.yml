@@ -6,5 +6,4 @@ resources:
   - komga-svc.yml
   - komga-ing.yml
   - komga-pvc.yml
-  - komga-sa.yml
   - komga-ns.yml
