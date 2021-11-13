@@ -27,6 +27,13 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: node-role.kubernetes.io/worker
       containers:
       - name: komga
         image: gotson/komga:latest
