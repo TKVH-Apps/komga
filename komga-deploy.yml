@@ -34,6 +34,7 @@ spec:
             preference:
               matchExpressions:
               - key: node-role.kubernetes.io/worker
+                operator: Exists
       containers:
       - name: komga
         image: gotson/komga:latest
