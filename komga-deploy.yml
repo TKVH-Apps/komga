@@ -50,6 +50,8 @@ spec:
           value: "-XX:+UseContainerSupport -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=1g"
         - name: KOMGA_FILE_HASHING
           value: "false"
+        - name: KOMGA_OAUTH2_ACCOUNT_CREATION
+          value: "true"
         volumeMounts:
         - name: komga
           mountPath: /config
