@@ -32,7 +32,7 @@ spec:
                 operator: Exists
       containers:
       - name: komga
-        image: gotson/komga:0.151.0
+        image: gotson/komga:0.153.1
         ports:
         - name: komga
           containerPort: 8080
