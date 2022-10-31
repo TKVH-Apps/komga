@@ -32,7 +32,7 @@ spec:
                 operator: Exists
       containers:
       - name: komga
-        image: gotson/komga:0.155.3
+        image: gotson/komga:0.157.3
         ports:
         - name: komga
           containerPort: 8080
@@ -42,7 +42,7 @@ spec:
         - name: KOMGA_REMEMBERME_KEY 
           value: "random"
         - name: JAVA_TOOL_OPTIONS
-          value: "-XX:+UseContainerSupport -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=4g"
+          value: "-XX:+UseContainerSupport -XX:+UnlockExperimentalVMOptions -XX:MaxRAM=2g"
         - name: KOMGA_FILE_HASHING
           value: "false"
         - name: KOMGA_OAUTH2_ACCOUNT_CREATION
@@ -66,9 +66,9 @@ spec:
           periodSeconds: 20
         resources:
           limits:
-            memory: 4Gi
+            memory: 2Gi
           requests:
-            memory: 4Gi
+            memory: 2Gi
       volumes:
       - name: komga
         persistentVolumeClaim:
